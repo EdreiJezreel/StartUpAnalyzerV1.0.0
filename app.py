@@ -1,33 +1,30 @@
 from flask import Flask, request, jsonify, render_template
+from openai import OpenAI
 import re
 import os
-from openai import OpenAI  
 
 app = Flask(__name__)
 
 client = OpenAI(
-    api_key=os.environ.get("OPENAI_API_KEY"),
-    #base_url="https://openrouter.ai/api/v1"  # Usa este base_url si estás usando OpenRouter
+    api_key=os.environ.get("OPENAI_API_KEY")
+    # Para OpenRouter (Modelos de DeepSeek u otros):
+    # , base_url="https://openrouter.ai/api/v1"
 )
-
 def es_url_valida(texto):
     patron = re.compile(r'^https?://[^\s]+$')
     return re.match(patron, texto)
-
 @app.route('/')
 def index():
     return render_template('paginaChat.html')
-
 @app.route('/procesar', methods=['POST'])
 def procesar():
     datos = request.get_json()
     if not datos or 'entrada' not in datos:
         return jsonify({'respuesta': 'No se recibió una entrada válida.'}), 400
-
     entrada = datos['entrada']
     if not es_url_valida(entrada):
         return jsonify({'respuesta': 'No se ha ingresado una URL válida.'}), 400
-
+# NOTA: SE MODIFICÓ EL PROMPT PARA UNA MEJOR RESPUESTA
     prompt = f"""
             NO ACCEDAS AL LINK. NO INTENTES ACCEDER A INTERNET. NO GENERES CONTENIDO INVENTADO.
 
@@ -121,35 +118,15 @@ def procesar():
 
             Devuelve solo este bloque de HTML. Nada más.
             """
-
     try:
-        response = client.responses.create(
-            model="gpt-4.1",
-            input=[{"role": "user", "content": prompt}],
-            text={"format": {"type": "text"}},
-            reasoning={},
-            tools=[
-                {
-                    "type": "web_search_preview",
-                    "user_location": {
-                        "type": "approximate",
-                        "country": "MX",
-                        "region": "CIUDAD DE MEXICO",
-                        "city": "CDMX"
-                    },
-                    "search_context_size": "low"
-                }
-            ],
-            temperature=0,
-            max_output_tokens=2048,
-            top_p=1,
-            store=True
+        chat = client.chat.completions.create(
+            model="gpt-4.1-nano",
+            messages=[{"role": "user", "content": prompt}]
         )
-        respuesta_html = response.choices[0].message.content  # Ajusta esta línea si el campo de salida es diferente
+        respuesta_html = chat.choices[0].message.content
     except Exception as e:
         print("Error al generar respuesta del modelo:", e)
         return jsonify({'respuesta': 'Error al generar el análisis con el modelo.'}), 500
-
     return jsonify({'respuesta': respuesta_html})
 
 if __name__ == '__main__':
