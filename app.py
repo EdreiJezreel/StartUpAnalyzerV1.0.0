@@ -145,7 +145,7 @@ def procesar():
             top_p=1,
             store=True
         )
-        respuesta_html = response.output  # Ajusta esta línea si el campo de salida es diferente
+        respuesta_html = response.choices[0].message.content  # Ajusta esta línea si el campo de salida es diferente
     except Exception as e:
         print("Error al generar respuesta del modelo:", e)
         return jsonify({'respuesta': 'Error al generar el análisis con el modelo.'}), 500
