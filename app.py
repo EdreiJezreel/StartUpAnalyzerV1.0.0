@@ -5,43 +5,35 @@ import os
 
 app = Flask(__name__)
 
-# Inicialización del cliente OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY")
-    # Puedes habilitar esta línea si usas OpenRouter:
+    # Para OpenRouter (Modelos de DeepSeek):
     # , base_url="https://openrouter.ai/api/v1"
 )
-
-# Validación de URL
 def es_url_valida(texto):
     patron = re.compile(r'^https?://[^\s]+$')
     return re.match(patron, texto)
-
 @app.route('/')
 def index():
     return render_template('paginaChat.html')
-
 @app.route('/procesar', methods=['POST'])
 def procesar():
     datos = request.get_json()
-
     if not datos or 'entrada' not in datos:
         return jsonify({'respuesta': 'No se recibió una entrada válida.'}), 400
-
     entrada = datos['entrada']
-
     if not es_url_valida(entrada):
         return jsonify({'respuesta': 'No se ha ingresado una URL válida.'}), 400
-
-    # Construcción del prompt para el modelo
+# NOTA: SE MODIFICÓ EL PROMPT PARA UNA MEJOR RESPUESTA
     prompt = f"""
             NO ACCEDAS AL LINK. NO INTENTES ACCEDER A INTERNET. NO GENERES CONTENIDO INVENTADO.
 
             ACTÚA ÚNICAMENTE COMO ANALISTA EJECUTIVO ESPECIALIZADO EN STARTUPS TECNOLÓGICAS.
 
-            Contexto: Se te proporciona este enlace solo como referencia del contenido sobre una empresa: {entrada}. El contenido ya fue extraído y será procesado por ti.
+            Contexto: Se te proporciona este enlace solo como referencia del contenido sobre una empresa: {entrada}. DEBES HACER MENCIÓN A LA STARUP MENCIONADA .
 
             Instrucciones:
+            - ES UN FORMATO ONE-PAGER, POR LO QUE ESTIMA LA EXTENSIÓN DEL REPORTE EN NO MÁS DE UNA PÁGINA.
             - Devuelve ÚNICAMENTE un documento en FORMATO HTML. No uses texto plano ni explicaciones fuera del esquema solicitado.
             - NO accedas a Internet ni intentes inferir datos que no estén explícitamente disponibles.
             - Si no hay datos disponibles, responde con “Dato no disponible” o “No hay evidencia pública”.
@@ -125,7 +117,6 @@ def procesar():
 
             Devuelve solo este bloque de HTML. Nada más.
             """
-
     try:
         chat = client.chat.completions.create(
             model="gpt-4.1-nano",
@@ -135,7 +126,6 @@ def procesar():
     except Exception as e:
         print("Error al generar respuesta del modelo:", e)
         return jsonify({'respuesta': 'Error al generar el análisis con el modelo.'}), 500
-
     return jsonify({'respuesta': respuesta_html})
 
 if __name__ == '__main__':
