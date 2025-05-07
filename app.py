@@ -7,7 +7,7 @@ app = Flask(__name__)
 # API KEY válida hasta el 15/05/2025
 client = OpenAI(
     api_key="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"
-    ,base_url="https://openrouter.ai/api/v1"
+    #,base_url="https://openrouter.ai/api/v1"
 )
 
 def es_url_valida(texto):
@@ -30,7 +30,7 @@ def procesar():
         return jsonify({'respuesta': 'No se ha ingresado una URL válida.'}), 400
 
     # Construcción del prompt
-    prompt = f"""Accede al siguiente link: {entrada} RESPONDE: Tu rol es actuar como un analista ejecutivo especializado en startups tecnológicas y digitales. 
+   ''' prompt = f"""Accede al siguiente link: {entrada} RESPONDE: Tu rol es actuar como un analista ejecutivo especializado en startups tecnológicas y digitales. 
         Tu tarea principal es generar fichas ejecutivas tipo one-pager orientadas a tomadores de decisiones estratégicas (CEO, CDO, comité de inversión, Board directors, investors.). 
         Tu análisis debe centrarse en la viabilidad de inversión, adquisición o integración estratégica de startups con alto componente tecnológico (IA, automatización, comercio conversacional, etc.). 
         Presenta la información de manera clara, sintética y basada en datos disponibles. Sin parafernalia. No especules. Si algún dato no está disponible, indícalo explícitamente. Utiliza un tono profesional y ejecutivo. 
@@ -49,11 +49,102 @@ def procesar():
         No inventes ni completes información si no está disponible en el sitio. NO ALUCINES, NO INTENTES INFORMACIÓN.
         Si no puedes acceder al sitio, notifícalo antes de generar el perfil. Sé directo, concreto y profesional. 
         Evita lenguaje promocional o especulativo. Si no hay datos, di: “Dato no disponible” o “No hay evidencia pública”. No incluyas más de 3–4 líneas por sección. 
-        Responde como si hablaras con un comité ejecutivo."""
+        Responde como si hablaras con un comité ejecutivo.""" '''
+    prompt = f"""
+            NO ACCEDAS AL LINK. NO INTENTES ACCEDER A INTERNET. NO GENERES CONTENIDO INVENTADO.
+
+            ACTÚA ÚNICAMENTE COMO ANALISTA EJECUTIVO ESPECIALIZADO EN STARTUPS TECNOLÓGICAS.
+
+            Contexto: Se te proporciona este enlace solo como referencia del contenido sobre una empresa: {entrada}. El contenido ya fue extraído y será procesado por ti.
+
+            Instrucciones:
+            - Devuelve ÚNICAMENTE un documento en FORMATO HTML. No uses texto plano ni explicaciones fuera del esquema solicitado.
+            - NO accedas a Internet ni intentes inferir datos que no estén explícitamente disponibles.
+            - Si no hay datos disponibles, responde con “Dato no disponible” o “No hay evidencia pública”.
+            - No incluyas secciones adicionales. No uses frases como “como modelo de lenguaje”.
+            - Sé concreto, ejecutivo y profesional. No utilices un tono promocional, técnico innecesario o especulativo.
+            - No repitas instrucciones. Solo genera la ficha ejecutiva directamente.
+            - Como fuente coloca  el link proporcionado en formato APA SEPTIMA EDICION y completa con los datos más apegados con el formato APA
+
+            Formato ESTRICTO de la respuesta (en etiquetas HTML adecuadas como <h2>, <ul>, <ol>, <p>, <strong>, etc.):
+
+            <h2>1. Resumen Ejecutivo</h2>
+            <p>Breve descripción del modelo de negocio, diferenciadores clave, tecnologías utilizadas, enfoque comercial. Incluir inversión recibida, métricas destacadas y aliados clave.</p>
+
+            <h2>2. Datos Generales</h2>
+            <ul>
+            <li><strong>Nombre de la Startup:</strong> ...</li>
+            <li><strong>Industria:</strong> ...</li>
+            <li><strong>Ubicación:</strong> ...</li>
+            <li><strong>Año de Creación:</strong> ...</li>
+            <li><strong>Etapa Actual:</strong> ...</li>
+            <li><strong>Número de empleados:</strong> ...</li>
+            <li><strong>Fundadores:</strong> ...</li>
+            </ul>
+
+            <h2>3. Indicadores Clave</h2>
+            <ul>
+            <li><strong>Crecimiento de ingresos:</strong> ...</li>
+            <li><strong>Rentabilidad:</strong> ...</li>
+            <li><strong>Optimización de procesos:</strong> ...</li>
+            <li><strong>Propuesta de Valor:</strong> ...</li>
+            <li><strong>Mercado Objetivo:</strong> ...</li>
+            <li><strong>Presencia en mercados actuales:</strong> ...</li>
+            </ul>
+
+            <h2>4. Expansión Tecnológica</h2>
+            <ul>
+            <li><strong>Uso de IA u otras tecnologías:</strong> ...</li>
+            <li><strong>Métricas destacadas:</strong> ...</li>
+            </ul>
+
+            <h2>5. Diferenciadores Clave</h2>
+            <ul>
+            <li><strong>Tecnología única:</strong> ...</li>
+            <li><strong>Modelo comercial innovador:</strong> ...</li>
+            <li><strong>Servicios o experiencias añadidas:</strong> ...</li>
+            </ul>
+
+            <h2>6. Contexto del Ecosistema</h2>
+            <ul>
+            <li><strong>Competidores principales:</strong> ...</li>
+            <li><strong>Ventajas o desventajas competitivas:</strong> ...</li>
+            <li><strong>Datos financieros de competidores:</strong> ...</li>
+            <li><strong>Clientes:</strong> ...</li>
+            <li><strong>Datos financieros relevantes:</strong> ...</li>
+            </ul>
+
+            <h2>7. Oportunidades Estratégicas</h2>
+            <ul>
+            <li><strong>Expansión regional o sectorial:</strong> ...</li>
+            <li><strong>Sinergias tecnológicas:</strong> ...</li>
+            <li><strong>Modelos de ingreso alternativos:</strong> ...</li>
+            </ul>
+
+            <h2>8. Viabilidad de Compra o Integración</h2>
+            <ul>
+            <li><strong>¿Es viable su adquisición o integración? ¿Por qué?</strong> ...</li>
+            <li><strong>Alineación con ecosistemas (Telecom, Bancario, Retail, Media, Educación, Salud, Seguros):</strong> ...</li>
+            </ul>
+
+            <h2>9. Recomendación Ejecutiva</h2>
+            <ul>
+            <li><strong>Recomendación:</strong> [Compra / Alianza / Integración tecnológica]</li>
+            <li><strong>Justificación estratégica:</strong> ...</li>
+            <li><strong>Propuesta de siguiente paso:</strong> ...</li>
+            </ul>
+
+            <h2>10. Fuentes</h2>
+            <ul> 
+            <li>Apellido, A. A. (Año, Mes Día). <em>Título del artículo</em>. Nombre del sitio. [URL]</li>
+            </ul>
+
+            Devuelve solo este bloque de HTML. Nada más.
+            """
 
     try:
         chat = client.chat.completions.create(
-            model="deepseek/deepseek-r1:free",
+            model="gpt-4.1-nano",
             messages=[{"role": "user", "content": prompt}]
         )
         respuesta = chat.choices[0].message.content
@@ -63,13 +154,13 @@ def procesar():
         return jsonify({'respuesta': 'Error al generar el análisis con el modelo.'}), 500
 
     try:
-        respuesta_html = convertir_respuesta_a_html(respuesta)
+        respuesta_html = respuesta
     except Exception as e:
         print("Error al convertir la respuesta a HTML:", e)
         return jsonify({'respuesta': 'Se generó el análisis, pero hubo un error al procesarlo.'}), 500
     return jsonify({'respuesta': respuesta_html})
 
-def convertir_respuesta_a_html(respuesta):
+'''def convertir_respuesta_a_html(respuesta):
     respuesta = respuesta.replace("---", "")
     secciones = re.split(r"\*\*(\d+\.\s[^\n*]+)\*\*", respuesta)
     html = ""
@@ -82,7 +173,7 @@ def convertir_respuesta_a_html(respuesta):
         else:
             contenido = f"<p>{contenido}</p>"
         html += f"<section><h2>{titulo}</h2>{contenido}</section>\n"
-    return html
+    return html'''
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
