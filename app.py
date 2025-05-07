@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 # API KEY válida hasta el 15/05/2025
 client = OpenAI(
-    api_key="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"
-    #,base_url="https://openrouter.ai/api/v1"
+    api_key="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"
+    ,base_url="https://openrouter.ai/api/v1"
 )
 
 def es_url_valida(texto):
@@ -53,7 +53,7 @@ def procesar():
 
     try:
         chat = client.chat.completions.create(
-            model="gpt-4.1-mini",
+            model="deepseek/deepseek-r1:free",
             messages=[{"role": "user", "content": prompt}]
         )
         respuesta = chat.choices[0].message.content
