@@ -59,6 +59,7 @@ def procesar():
         respuesta = chat.choices[0].message.content
     except Exception as e:
         print("Error al generar respuesta del modelo:", e)
+        print(respuesta)
         return jsonify({'respuesta': 'Error al generar el análisis con el modelo.'}), 500
 
     try:
