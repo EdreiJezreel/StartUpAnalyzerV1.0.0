@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # API KEY válida hasta el 15/05/2025
 client = OpenAI(
-    api_key="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"
+    api_key=os.environ.get("OPENAI_API_KEY")
     #,base_url="https://openrouter.ai/api/v1"
 )
 
