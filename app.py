@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 # API KEY válida hasta el 15/05/2025
 client = OpenAI(
-    api_key="k-or-v1-9f0a171372a39f9837eeb5a6b61d8803e8d272cff45c3effcb5f9685aeafee72",
-    base_url="https://openrouter.ai/api/v1"
+    api_key="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"
+    #,base_url="https://openrouter.ai/api/v1"
 )
 
 def es_url_valida(texto):
@@ -53,7 +53,7 @@ def procesar():
 
     try:
         chat = client.chat.completions.create(
-            model="meta-llama/llama-4-scout:free",
+            model="gpt-4.1-mini",
             messages=[{"role": "user", "content": prompt}]
         )
         respuesta = chat.choices[0].message.content
