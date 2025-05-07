@@ -48,7 +48,7 @@ def procesar():
             - No incluyas secciones adicionales. No uses frases como “como modelo de lenguaje”.
             - Sé concreto, ejecutivo y profesional. No utilices un tono promocional, técnico innecesario o especulativo.
             - No repitas instrucciones. Solo genera la ficha ejecutiva directamente.
-            - Como fuente coloca  el link proporcionado en formato APA SEPTIMA EDICION y completa con los datos más apegados con el formato APA
+            - Como fuente coloca  el link proporcionado en formato APA SEPTIMA EDICION y completa con los datos más apegados con el formato APA. Si la URL es muy extensa, acórtala a no más de 40 caracteres
 
             Formato ESTRICTO de la respuesta (en etiquetas HTML adecuadas como <h3>, <ul>, <ol>, <p>, <strong>, etc.):
 
