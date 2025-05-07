@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from openai import OpenAI
-import re
+import re, os
 
 app = Flask(__name__)
 # Por motivos del hosting, se coloca el APIKEY, estará disponible hasta el 15/05/2025
@@ -70,4 +70,5 @@ def convertir_respuesta_a_html(respuesta):
     return html
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
