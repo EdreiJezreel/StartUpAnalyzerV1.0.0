@@ -50,97 +50,97 @@ def procesar():
         Si no puedes acceder al sitio, notifícalo antes de generar el perfil. Sé directo, concreto y profesional. 
         Evita lenguaje promocional o especulativo. Si no hay datos, di: “Dato no disponible” o “No hay evidencia pública”. No incluyas más de 3–4 líneas por sección. 
         Responde como si hablaras con un comité ejecutivo.""" '''
-    prompt = f"""
-            NO ACCEDAS AL LINK. NO INTENTES ACCEDER A INTERNET. NO GENERES CONTENIDO INVENTADO.
-
-            ACTÚA ÚNICAMENTE COMO ANALISTA EJECUTIVO ESPECIALIZADO EN STARTUPS TECNOLÓGICAS.
-
-            Contexto: Se te proporciona este enlace solo como referencia del contenido sobre una empresa: {entrada}. El contenido ya fue extraído y será procesado por ti.
-
-            Instrucciones:
-            - Devuelve ÚNICAMENTE un documento en FORMATO HTML. No uses texto plano ni explicaciones fuera del esquema solicitado.
-            - NO accedas a Internet ni intentes inferir datos que no estén explícitamente disponibles.
-            - Si no hay datos disponibles, responde con “Dato no disponible” o “No hay evidencia pública”.
-            - No incluyas secciones adicionales. No uses frases como “como modelo de lenguaje”.
-            - Sé concreto, ejecutivo y profesional. No utilices un tono promocional, técnico innecesario o especulativo.
-            - No repitas instrucciones. Solo genera la ficha ejecutiva directamente.
-            - Como fuente coloca  el link proporcionado en formato APA SEPTIMA EDICION y completa con los datos más apegados con el formato APA
-
-            Formato ESTRICTO de la respuesta (en etiquetas HTML adecuadas como <h2>, <ul>, <ol>, <p>, <strong>, etc.):
-
-            <h2>1. Resumen Ejecutivo</h2>
-            <p>Breve descripción del modelo de negocio, diferenciadores clave, tecnologías utilizadas, enfoque comercial. Incluir inversión recibida, métricas destacadas y aliados clave.</p>
-
-            <h2>2. Datos Generales</h2>
-            <ul>
-            <li><strong>Nombre de la Startup:</strong> ...</li>
-            <li><strong>Industria:</strong> ...</li>
-            <li><strong>Ubicación:</strong> ...</li>
-            <li><strong>Año de Creación:</strong> ...</li>
-            <li><strong>Etapa Actual:</strong> ...</li>
-            <li><strong>Número de empleados:</strong> ...</li>
-            <li><strong>Fundadores:</strong> ...</li>
-            </ul>
-
-            <h2>3. Indicadores Clave</h2>
-            <ul>
-            <li><strong>Crecimiento de ingresos:</strong> ...</li>
-            <li><strong>Rentabilidad:</strong> ...</li>
-            <li><strong>Optimización de procesos:</strong> ...</li>
-            <li><strong>Propuesta de Valor:</strong> ...</li>
-            <li><strong>Mercado Objetivo:</strong> ...</li>
-            <li><strong>Presencia en mercados actuales:</strong> ...</li>
-            </ul>
-
-            <h2>4. Expansión Tecnológica</h2>
-            <ul>
-            <li><strong>Uso de IA u otras tecnologías:</strong> ...</li>
-            <li><strong>Métricas destacadas:</strong> ...</li>
-            </ul>
-
-            <h2>5. Diferenciadores Clave</h2>
-            <ul>
-            <li><strong>Tecnología única:</strong> ...</li>
-            <li><strong>Modelo comercial innovador:</strong> ...</li>
-            <li><strong>Servicios o experiencias añadidas:</strong> ...</li>
-            </ul>
-
-            <h2>6. Contexto del Ecosistema</h2>
-            <ul>
-            <li><strong>Competidores principales:</strong> ...</li>
-            <li><strong>Ventajas o desventajas competitivas:</strong> ...</li>
-            <li><strong>Datos financieros de competidores:</strong> ...</li>
-            <li><strong>Clientes:</strong> ...</li>
-            <li><strong>Datos financieros relevantes:</strong> ...</li>
-            </ul>
-
-            <h2>7. Oportunidades Estratégicas</h2>
-            <ul>
-            <li><strong>Expansión regional o sectorial:</strong> ...</li>
-            <li><strong>Sinergias tecnológicas:</strong> ...</li>
-            <li><strong>Modelos de ingreso alternativos:</strong> ...</li>
-            </ul>
-
-            <h2>8. Viabilidad de Compra o Integración</h2>
-            <ul>
-            <li><strong>¿Es viable su adquisición o integración? ¿Por qué?</strong> ...</li>
-            <li><strong>Alineación con ecosistemas (Telecom, Bancario, Retail, Media, Educación, Salud, Seguros):</strong> ...</li>
-            </ul>
-
-            <h2>9. Recomendación Ejecutiva</h2>
-            <ul>
-            <li><strong>Recomendación:</strong> [Compra / Alianza / Integración tecnológica]</li>
-            <li><strong>Justificación estratégica:</strong> ...</li>
-            <li><strong>Propuesta de siguiente paso:</strong> ...</li>
-            </ul>
-
-            <h2>10. Fuentes</h2>
-            <ul> 
-            <li>Apellido, A. A. (Año, Mes Día). <em>Título del artículo</em>. Nombre del sitio. [URL]</li>
-            </ul>
-
-            Devuelve solo este bloque de HTML. Nada más.
-            """
+        prompt = f"""
+                NO ACCEDAS AL LINK. NO INTENTES ACCEDER A INTERNET. NO GENERES CONTENIDO INVENTADO.
+    
+                ACTÚA ÚNICAMENTE COMO ANALISTA EJECUTIVO ESPECIALIZADO EN STARTUPS TECNOLÓGICAS.
+    
+                Contexto: Se te proporciona este enlace solo como referencia del contenido sobre una empresa: {entrada}. El contenido ya fue extraído y será procesado por ti.
+    
+                Instrucciones:
+                - Devuelve ÚNICAMENTE un documento en FORMATO HTML. No uses texto plano ni explicaciones fuera del esquema solicitado.
+                - NO accedas a Internet ni intentes inferir datos que no estén explícitamente disponibles.
+                - Si no hay datos disponibles, responde con “Dato no disponible” o “No hay evidencia pública”.
+                - No incluyas secciones adicionales. No uses frases como “como modelo de lenguaje”.
+                - Sé concreto, ejecutivo y profesional. No utilices un tono promocional, técnico innecesario o especulativo.
+                - No repitas instrucciones. Solo genera la ficha ejecutiva directamente.
+                - Como fuente coloca  el link proporcionado en formato APA SEPTIMA EDICION y completa con los datos más apegados con el formato APA
+    
+                Formato ESTRICTO de la respuesta (en etiquetas HTML adecuadas como <h2>, <ul>, <ol>, <p>, <strong>, etc.):
+    
+                <h2>1. Resumen Ejecutivo</h2>
+                <p>Breve descripción del modelo de negocio, diferenciadores clave, tecnologías utilizadas, enfoque comercial. Incluir inversión recibida, métricas destacadas y aliados clave.</p>
+    
+                <h2>2. Datos Generales</h2>
+                <ul>
+                <li><strong>Nombre de la Startup:</strong> ...</li>
+                <li><strong>Industria:</strong> ...</li>
+                <li><strong>Ubicación:</strong> ...</li>
+                <li><strong>Año de Creación:</strong> ...</li>
+                <li><strong>Etapa Actual:</strong> ...</li>
+                <li><strong>Número de empleados:</strong> ...</li>
+                <li><strong>Fundadores:</strong> ...</li>
+                </ul>
+    
+                <h2>3. Indicadores Clave</h2>
+                <ul>
+                <li><strong>Crecimiento de ingresos:</strong> ...</li>
+                <li><strong>Rentabilidad:</strong> ...</li>
+                <li><strong>Optimización de procesos:</strong> ...</li>
+                <li><strong>Propuesta de Valor:</strong> ...</li>
+                <li><strong>Mercado Objetivo:</strong> ...</li>
+                <li><strong>Presencia en mercados actuales:</strong> ...</li>
+                </ul>
+    
+                <h2>4. Expansión Tecnológica</h2>
+                <ul>
+                <li><strong>Uso de IA u otras tecnologías:</strong> ...</li>
+                <li><strong>Métricas destacadas:</strong> ...</li>
+                </ul>
+    
+                <h2>5. Diferenciadores Clave</h2>
+                <ul>
+                <li><strong>Tecnología única:</strong> ...</li>
+                <li><strong>Modelo comercial innovador:</strong> ...</li>
+                <li><strong>Servicios o experiencias añadidas:</strong> ...</li>
+                </ul>
+    
+                <h2>6. Contexto del Ecosistema</h2>
+                <ul>
+                <li><strong>Competidores principales:</strong> ...</li>
+                <li><strong>Ventajas o desventajas competitivas:</strong> ...</li>
+                <li><strong>Datos financieros de competidores:</strong> ...</li>
+                <li><strong>Clientes:</strong> ...</li>
+                <li><strong>Datos financieros relevantes:</strong> ...</li>
+                </ul>
+    
+                <h2>7. Oportunidades Estratégicas</h2>
+                <ul>
+                <li><strong>Expansión regional o sectorial:</strong> ...</li>
+                <li><strong>Sinergias tecnológicas:</strong> ...</li>
+                <li><strong>Modelos de ingreso alternativos:</strong> ...</li>
+                </ul>
+    
+                <h2>8. Viabilidad de Compra o Integración</h2>
+                <ul>
+                <li><strong>¿Es viable su adquisición o integración? ¿Por qué?</strong> ...</li>
+                <li><strong>Alineación con ecosistemas (Telecom, Bancario, Retail, Media, Educación, Salud, Seguros):</strong> ...</li>
+                </ul>
+    
+                <h2>9. Recomendación Ejecutiva</h2>
+                <ul>
+                <li><strong>Recomendación:</strong> [Compra / Alianza / Integración tecnológica]</li>
+                <li><strong>Justificación estratégica:</strong> ...</li>
+                <li><strong>Propuesta de siguiente paso:</strong> ...</li>
+                </ul>
+    
+                <h2>10. Fuentes</h2>
+                <ul> 
+                <li>Apellido, A. A. (Año, Mes Día). <em>Título del artículo</em>. Nombre del sitio. [URL]</li>
+                </ul>
+    
+                Devuelve solo este bloque de HTML. Nada más.
+                """
 
     try:
         chat = client.chat.completions.create(
