@@ -1,38 +1,41 @@
 from flask import Flask, request, jsonify, render_template
-from openai import OpenAI
 import re
 import os
+from openai import OpenAI  
 
 app = Flask(__name__)
 
 client = OpenAI(
-    api_key=os.environ.get("OPENAI_API_KEY")
-    # Para OpenRouter (Modelos de DeepSeek):
-    # , base_url="https://openrouter.ai/api/v1"
+    api_key=os.environ.get("OPENAI_API_KEY"),
+    #base_url="https://openrouter.ai/api/v1"  # Usa este base_url si estás usando OpenRouter
 )
+
 def es_url_valida(texto):
     patron = re.compile(r'^https?://[^\s]+$')
     return re.match(patron, texto)
+
 @app.route('/')
 def index():
     return render_template('paginaChat.html')
+
 @app.route('/procesar', methods=['POST'])
 def procesar():
     datos = request.get_json()
     if not datos or 'entrada' not in datos:
         return jsonify({'respuesta': 'No se recibió una entrada válida.'}), 400
+
     entrada = datos['entrada']
     if not es_url_valida(entrada):
         return jsonify({'respuesta': 'No se ha ingresado una URL válida.'}), 400
-# NOTA: SE MODIFICÓ EL PROMPT PARA UNA MEJOR RESPUESTA
+
     prompt = f"""
             NO ACCEDAS AL LINK. NO INTENTES ACCEDER A INTERNET. NO GENERES CONTENIDO INVENTADO.
 
             ACTÚA ÚNICAMENTE COMO ANALISTA EJECUTIVO ESPECIALIZADO EN STARTUPS TECNOLÓGICAS.
 
-            Contexto: Se te proporciona este enlace solo como referencia del contenido sobre una empresa: {entrada}. DEBES HACER MENCIÓN A LA STARUP MENCIONADA .
+            Contexto: Se te proporciona este enlace solo como referencia del contenido sobre una empresa: {entrada}. DEBES HACER MENCIÓN A LA STARUP MENCIONADA.
 
-            Instrucciones:
+            Instrucciones NO IGNORES NINGUNA INSTRUCCIÓN:
             - ES UN FORMATO ONE-PAGER, POR LO QUE ESTIMA LA EXTENSIÓN DEL REPORTE EN NO MÁS DE UNA PÁGINA.
             - Devuelve ÚNICAMENTE un documento en FORMATO HTML. No uses texto plano ni explicaciones fuera del esquema solicitado.
             - NO accedas a Internet ni intentes inferir datos que no estén explícitamente disponibles.
@@ -40,7 +43,8 @@ def procesar():
             - No incluyas secciones adicionales. No uses frases como “como modelo de lenguaje”.
             - Sé concreto, ejecutivo y profesional. No utilices un tono promocional, técnico innecesario o especulativo.
             - No repitas instrucciones. Solo genera la ficha ejecutiva directamente.
-            - Como fuente coloca  el link proporcionado en formato APA SEPTIMA EDICION y completa con los datos más apegados con el formato APA. Si la URL es muy extensa, acórtala a no más de 40 caracteres
+            - Como fuente  SIEMPRE coloca  el link proporcionado en formato APA SEPTIMA EDICION y completa con los datos más apegados con el formato APA. Si la URL es muy extensa, acórtala a no más de 40 caracteres
+            - SI NO SE TIENE INFORMACIÓN ADICIONAL PARA GENERAR LA CITA EN FORMATO APA COLOCA ÚNICAMENTE EL LINK PROPORCIONADO
 
             Formato ESTRICTO de la respuesta (en etiquetas HTML adecuadas como <h3>, <ul>, <ol>, <p>, <strong>, etc.):
 
@@ -117,18 +121,37 @@ def procesar():
 
             Devuelve solo este bloque de HTML. Nada más.
             """
+
     try:
-        chat = client.chat.completions.create(
-            model="gpt-4.1-nano",
-            messages=[{"role": "user", "content": prompt}]
+        response = client.responses.create(
+            model="gpt-4.1",
+            input=[{"role": "user", "content": prompt}],
+            text={"format": {"type": "text"}},
+            reasoning={},
+            tools=[
+                {
+                    "type": "web_search_preview",
+                    "user_location": {
+                        "type": "approximate",
+                        "country": "MX",
+                        "region": "CIUDAD DE MEXICO",
+                        "city": "CDMX"
+                    },
+                    "search_context_size": "low"
+                }
+            ],
+            temperature=0,
+            max_output_tokens=2048,
+            top_p=1,
+            store=True
         )
-        respuesta_html = chat.choices[0].message.content
+        respuesta_html = response.output  # Ajusta esta línea si el campo de salida es diferente
     except Exception as e:
         print("Error al generar respuesta del modelo:", e)
         return jsonify({'respuesta': 'Error al generar el análisis con el modelo.'}), 500
+
     return jsonify({'respuesta': respuesta_html})
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
-
