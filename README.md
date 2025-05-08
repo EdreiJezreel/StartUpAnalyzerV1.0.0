@@ -20,6 +20,9 @@ StartUpAnalyzer es un generador de reportes One-Page sobre startups relevantes m
 - JavaScript Vanilla (No se usaron Frameworks)
 - Backend: Flask (Python) 
 - IA: Modelo de lenguaje `gpt-4.1-nano` (Puede ser modificado vía OpenRouter a otros modelos con mayor capacidad o gratuitos, incluso por modelos de OpenAI).
+- Hosting: Render
 
 > [!CAUTION]
 > Todo reporte es generado en su totalidad por IA acorde a las capacidades del modelo empleado, es posible que las indicaciones en el prompt sean omitidas por el modelo, como puede ser la navegación web, por lo que los datos mostrados en el reporte deben ser verificados en fuentes confiables, ya que los modelos de IA puede cometer errores. 
+
+Por motivos de la herramienta de Hosting, tuve que integrar la lógica de de JavaScript y los estilos en el html, esto será corregido en una siguiente versión.
