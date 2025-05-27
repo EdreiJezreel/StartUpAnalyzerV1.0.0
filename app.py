@@ -43,6 +43,8 @@ def procesar():
     - ES UN FORMATO ONE-PAGER, POR LO QUE ESTIMA LA EXTENSIÓN DEL REPORTE EN NO MÁS DE UNA PÁGINA.
     - Devuelve ÚNICAMENTE un documento en FORMATO HTML. No uses texto plano ni explicaciones fuera del esquema solicitado.
     - Utiliza la información encontrada en la búsqueda web para completar el análisis.
+    - NO coloques la fuente de la información en el texto, ya que se colocan al final en formato APA como se mostrará más adelante.
+    - Usa la información de la fuente primaria proporcionada, si no hay información suficiente, puedes apoyarte en otras funtes de información secundaria siempre y cuando sean fuentes confiables, no uses wikipedia.
     - Si no hay datos disponibles, responde con "Dato no disponible" o "No hay evidencia pública".
     - No incluyas secciones adicionales. No uses frases como "como modelo de lenguaje".
     - Sé concreto, ejecutivo y profesional. No utilices un tono promocional, técnico innecesario o especulativo.
