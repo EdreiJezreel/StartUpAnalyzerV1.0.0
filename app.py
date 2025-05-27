@@ -122,7 +122,7 @@ def procesar():
 
     <h3>10. Fuentes</h3>
     <ul> 
-    <li>Apellido, A. A. (Año, Mes Día). <em>Título del artículo</em>. Nombre del sitio. [URL]</li>
+    <li>Apellido, A. A. (Año, Mes Día). <em>Título del artículo</em>. Nombre del sitio. <a>URL</a> </li>
     </ul>
 
     Devuelve solo este bloque de HTML. Nada más.
