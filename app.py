@@ -63,7 +63,7 @@ def procesar():
     <h3>Resumen Ejecutivo</h3>
     <p>Breve descripción del modelo de negocio, diferenciadores clave, tecnologías utilizadas, enfoque comercial. Incluir inversión recibida, métricas destacadas y aliados clave.</p>
 
-    <h3>2. Datos Generales</h3>
+    <h3>Datos Generales</h3>
     <ul>
     <li><strong>Nombre de la Startup:</strong> ...</li>
     <li><strong>Ubicación:</strong> ...</li>
