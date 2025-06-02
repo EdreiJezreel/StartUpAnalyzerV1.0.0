@@ -51,7 +51,7 @@ def procesar():
     - No repitas instrucciones. Solo genera la ficha ejecutiva directamente.
     - Como fuente SIEMPRE coloca el link proporcionado en formato APA SEPTIMA EDICION y completa con los datos más apegados con el formato APA. Si la URL es muy extensa, acórtala a no más de 40 caracteres
     - SI NO SE TIENE INFORMACIÓN ADICIONAL PARA GENERAR LA CITA EN FORMATO APA COLOCA ÚNICAMENTE EL LINK PROPORCIONADO
-    - En Tamaño de de la empresa se coloca el número de empleados, donde va en los siguientes rangos: 0-10, 11-50, 51-200, 201-500, 501-1,000, 1,001-5,000, 5,001-10,000, +10,0000 EMPLEADOS
+    - En Tamaño de la empresa se coloca el número de empleados, donde va en los siguientes rangos: 0-10, 11-50, 51-200, 201-500, 501-1,000, 1,001-5,000, 5,001-10,000, +10,0000 EMPLEADOS
     - Las redes sociales DEBEN SER REALES Y VERDADERAS, de lo contrario no se indicará. Si no la encuentras directamente indica: "No se ha encontrado la red social" NO INVENTES LAS URL
     - En Sector se colocará solo una de las siguientes categorías: Contenido & Medios, Empresa, IT & Datos, Energía, FinTech, Retail & Mercadotencnia, Salud, Sustentabilidad, Tecnología Industrial, Tecnologías de Seguridad, Transporte & Logística.
     - En Industrias (Tecnología primaria) se colocará solo una de las siguientes características: Almacenamiento de Datos, Biotecnología, Computación cuántica, Comunicación, Criptografía, Inteligencia Artificial, Maquinaría y Robótica, Plataformas & Interfaces, Semiconductores & Electricidad, Sensores, Simulación & Imagen, Tecnología de Infraestructura.
@@ -76,7 +76,7 @@ def procesar():
             <li><strong>LinkedIn:</strong> ...</li>
             <li><strong>Facebook:</strong> ...</li>
             <li><strong>Instagram:</strong> ...</li>
-            <li><strong>X (Twitter):</strong> ...</li>
+            <li><strong>X:</strong> ...</li>
             <li><strong>Youtube:</strong> ...</li>
             <li><strong>Video Promocional:</strong> ...</li>
         </ol>
