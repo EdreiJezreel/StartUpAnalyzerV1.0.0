@@ -51,6 +51,12 @@ def procesar():
     - No repitas instrucciones. Solo genera la ficha ejecutiva directamente.
     - Como fuente SIEMPRE coloca el link proporcionado en formato APA SEPTIMA EDICION y completa con los datos más apegados con el formato APA. Si la URL es muy extensa, acórtala a no más de 40 caracteres
     - SI NO SE TIENE INFORMACIÓN ADICIONAL PARA GENERAR LA CITA EN FORMATO APA COLOCA ÚNICAMENTE EL LINK PROPORCIONADO
+    - En Tamaño de de la empresa se coloca el número de empleados, donde va en los siguientes rangos: 0-10, 11-50, 51-200, 201-500, 501-1,000, 1,001-5,000, 5,001-10,000, +10,0000 EMPLEADOS
+    - Las redes sociales se colocan las que puedan ser ubicadas, de lo contrario no se indicará. Si no la encuentras directamente indica: "No se ha encontrado la red social" NO INVENTES LAS URL
+    - En Sector se colocará solo una de las siguientes categorías: Contenido & Medios, Empresa, IT & Datos, Energía, FinTech, Retail & Mercadotencnia, Salud, Sustentabilidad, Tecnología Industrial, Tecnologías de Seguridad, Transporte & Logística.
+    - En Industrias (Tecnología primaria) se colocará solo una de las siguientes características: Almacenamiento de Datos, Biotecnología, Computación cuántica, Comunicación, Criptografía, Inteligencia Artificial, Maquinaría y Robótica, Plataformas & Interfaces, Semiconductores & Electricidad, Sensores, Simulación & Imagen, Tecnología de Infraestructura.
+    - En Mercado (Tecnología Secundaria) se colocará una o más de las siguientes categorías: Aeroespacial, Conectividad de energía, Consumo, Educación, Emprendimiento, Empresarial & Profesional, Finanzas, Industrial, Medios & Entretimiento, Retail & Comercio Electrónico, Salud, Sector Público, Segurdiad, Telecomunicaciones, Transporte & Movilidad, Turismo.
+    - Para los fundadores, no inventes la información de sus perfiles de LinkedIn, si no se pueden ubicar, índica: "Perfil no encontrado"
 
     Formato ESTRICTO de la respuesta (en etiquetas HTML adecuadas como <h3>, <ul>, <ol>, <p>, <strong>, etc.):
 
@@ -60,22 +66,58 @@ def procesar():
     <h3>2. Datos Generales</h3>
     <ul>
     <li><strong>Nombre de la Startup:</strong> ...</li>
-    <li><strong>Industria:</strong> ...</li>
     <li><strong>Ubicación:</strong> ...</li>
-    <li><strong>Año de Creación:</strong> ...</li>
+    <li><strong>Año de Fundación:</strong> ...</li>
     <li><strong>Etapa Actual:</strong> ...</li>
-    <li><strong>Número de empleados:</strong> ...</li>
-    <li><strong>Fundadores:</strong> ...</li>
+    <li><strong>Tamaño de la Empresa:</strong> ...</li>
+    <li><strong>Sitio Web:</strong> ...</li>
+    <li><strong>Redes Sociales:</strong>
+        <ol>
+            <li><strong>LinkedIn:</strong> ...</li>
+            <li><strong>Facebook:</strong> ...</li>
+            <li><strong>Instagram:</strong> ...</li>
+            <li><strong>X (Twitter):</strong> ...</li>
+            <li><strong>Youtube:</strong> ...</li>
+            <li><strong>Video Promocional:</strong> ...</li>
+        </ol>
+    </li>
+    <li><strong>Fundadores:</strong>
+        <ol>
+            <li>...</li>
+        </ol>
+    </li>
+    <li><strong>Puesto de los Fundadores:</strong>
+        <ol>
+            <li>...</li>
+        </ol>
+    </li>
+    <li><strong>Currículum de los Fundadores:</strong>
+        <ol>
+            <li>...</li>
+        </ol>
+    </li>
+    <li><strong>URL LinkedIn Fundadores:</strong>
+        <ol>
+            <li>...</li>
+        </ol>
+    </li>
     </ul>
 
     <h3>3. Indicadores Clave</h3>
     <ul>
+    <li><strong>Sector:</strong> ...</li>
+    <li><strong>Industrias (Tecnología primaria):</strong> ...</li>
+    <li><strong>Mercado (Tecnología Secundaria):</strong> ...</li>
     <li><strong>Crecimiento de ingresos:</strong> ...</li>
     <li><strong>Rentabilidad:</strong> ...</li>
     <li><strong>Optimización de procesos:</strong> ...</li>
     <li><strong>Propuesta de Valor:</strong> ...</li>
     <li><strong>Mercado Objetivo:</strong> ...</li>
     <li><strong>Presencia en mercados actuales:</strong> ...</li>
+    <li><strong>Inversionistas:</strong> ...</li>
+    <li><strong>Ingresos:</strong> ...</li>
+    <li><strong>Financiamiento:</strong> ...</li>
+    <li><strong>Valoración:</strong> ...</li>
     </ul>
 
     <h3>4. Expansión Tecnológica</h3>
@@ -120,7 +162,7 @@ def procesar():
     <li><strong>Propuesta de siguiente paso:</strong> ...</li>
     </ul>
 
-    <h3>10. Fuentes</h3>
+    <h3>Fuentes</h3>
     <ul> 
     <li>Apellido, A. A. (Año, Mes Día). <em>Título del artículo</em>. Nombre del sitio. <a>URL</a> </li>
     </ul>
