@@ -60,7 +60,7 @@ def procesar():
 
     Formato ESTRICTO de la respuesta (en etiquetas HTML adecuadas como <h3>, <ul>, <ol>, <p>, <strong>, etc.):
 
-    <h3>1. Resumen Ejecutivo</h3>
+    <h3>Resumen Ejecutivo</h3>
     <p>Breve descripción del modelo de negocio, diferenciadores clave, tecnologías utilizadas, enfoque comercial. Incluir inversión recibida, métricas destacadas y aliados clave.</p>
 
     <h3>2. Datos Generales</h3>
@@ -103,7 +103,7 @@ def procesar():
     </li>
     </ul>
 
-    <h3>3. Indicadores Clave</h3>
+    <h3>Indicadores Clave</h3>
     <ul>
     <li><strong>Sector:</strong> ...</li>
     <li><strong>Industrias (Tecnología primaria):</strong> ...</li>
@@ -120,20 +120,20 @@ def procesar():
     <li><strong>Valoración:</strong> ...</li>
     </ul>
 
-    <h3>4. Expansión Tecnológica</h3>
+    <h3>Expansión Tecnológica</h3>
     <ul>
     <li><strong>Uso de IA u otras tecnologías:</strong> ...</li>
     <li><strong>Métricas destacadas:</strong> ...</li>
     </ul>
 
-    <h3>5. Diferenciadores Clave</h3>
+    <h3>Diferenciadores Clave</h3>
     <ul>
     <li><strong>Tecnología única:</strong> ...</li>
     <li><strong>Modelo comercial innovador:</strong> ...</li>
     <li><strong>Servicios o experiencias añadidas:</strong> ...</li>
     </ul>
 
-    <h3>6. Contexto del Ecosistema</h3>
+    <h3>Contexto del Ecosistema</h3>
     <ul>
     <li><strong>Competidores principales:</strong> ...</li>
     <li><strong>Ventajas o desventajas competitivas:</strong> ...</li>
@@ -142,20 +142,20 @@ def procesar():
     <li><strong>Datos financieros relevantes:</strong> ...</li>
     </ul>
 
-    <h3>7. Oportunidades Estratégicas</h3>
+    <h3>Oportunidades Estratégicas</h3>
     <ul>
     <li><strong>Expansión regional o sectorial:</strong> ...</li>
     <li><strong>Sinergias tecnológicas:</strong> ...</li>
     <li><strong>Modelos de ingreso alternativos:</strong> ...</li>
     </ul>
 
-    <h3>8. Viabilidad de Compra o Integración</h3>
+    <h3>Viabilidad de Compra o Integración</h3>
     <ul>
     <li><strong>¿Es viable su adquisición o integración? ¿Por qué?</strong> ...</li>
     <li><strong>Alineación con ecosistemas (Telecom, Bancario, Retail, Media, Educación, Salud, Seguros):</strong> ...</li>
     </ul>
 
-    <h3>9. Recomendación Ejecutiva</h3>
+    <h3>Recomendación Ejecutiva</h3>
     <ul>
     <li><strong>Recomendación:</strong> [Compra / Alianza / Integración tecnológica]</li>
     <li><strong>Justificación estratégica:</strong> ...</li>
